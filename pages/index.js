@@ -1,9 +1,13 @@
-import styled from "styled-components";
-import db from "../db.json";
-import Widget from "../src/components/Widget";
-import Footer from "../src/components/Footer";
-import GithubCorner from "../src/components/GithubCorner";
-import QuizBackground from "../src/components/QuizBackground";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+
+import db from '../db.json';
+import Widget from '../src/components/Widget';
+import Footer from '../src/components/Footer';
+import GithubCorner from '../src/components/GithubCorner';
+import QuizBackground from '../src/components/QuizBackground';
 
 // Styled Components
 // const Title = styled.h1`
@@ -49,15 +53,42 @@ export const QuizContainer = styled.div`
 `;
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = useState('');
+  console.log('Retorno do useState: ', name, setName);
+
   return (
     <QuizBackground backgroundImage={db.bg}>
+      <Head><title>Hello</title></Head>
       <QuizContainer>
         <Widget>
           <Widget.Header>
-            <h1>Draco dormiens nunquam titillandus</h1>
+            <h1>Harry Potter</h1>
           </Widget.Header>
           <Widget.Content>
-            <p>Draco dormiens nunquam titillandus</p>
+            <form onSubmit={(event) => {
+              event.preventDefault();
+
+              router.push(`/quiz?name=${name}`);
+
+              // Router manda para a próxima paǵina
+            }}
+            >
+              <input
+                onChange={(event) => {
+                  console.log(event.target.value);
+                  // State
+                  // name = event.target.value;
+                  setName(event.target.value);
+                }}
+                placeholder="Seu nome"
+              />
+              <button type="submit" disabled={name.length === 0}>
+                {/* eslint-disable-next-line no-trailing-spaces */}
+                Jogar  
+                {name}
+              </button>
+            </form>
           </Widget.Content>
         </Widget>
         <Widget>
