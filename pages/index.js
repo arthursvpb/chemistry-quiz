@@ -8,6 +8,9 @@ import Widget from '../src/components/Widget';
 import Footer from '../src/components/Footer';
 import GithubCorner from '../src/components/GithubCorner';
 import QuizBackground from '../src/components/QuizBackground';
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
+// import QuizContainer from '../src/components/QuizContainer'
 
 // Styled Components
 // const Title = styled.h1`
@@ -27,7 +30,7 @@ import QuizBackground from '../src/components/QuizBackground';
 //   background-position: center;
 // `;
 
-export const QuizContainer = styled.div`
+const QuizContainer = styled.div`
   width: 100%;
   max-width: 350px;
   padding-top: 45px;
@@ -63,7 +66,7 @@ export default function Home() {
       <QuizContainer>
         <Widget>
           <Widget.Header>
-            <h1>Harry Potter</h1>
+            <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
             <form onSubmit={(event) => {
@@ -74,20 +77,16 @@ export default function Home() {
               // Router manda para a próxima paǵina
             }}
             >
-              <input
-                onChange={(event) => {
-                  console.log(event.target.value);
-                  // State
-                  // name = event.target.value;
-                  setName(event.target.value);
-                }}
+              <Input
+                name="username"
+                onChange={(event) => setName(event.target.value)}
                 placeholder="Seu nome"
+                value={name}
               />
-              <button type="submit" disabled={name.length === 0}>
+              <Button type="submit" disabled={name.length === 0}>
                 {/* eslint-disable-next-line no-trailing-spaces */}
-                Jogar  
-                {name}
-              </button>
+                {`Jogar ${name}`}
+              </Button>
             </form>
           </Widget.Content>
         </Widget>
