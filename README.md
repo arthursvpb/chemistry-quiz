@@ -1,6 +1,6 @@
 ## Chemistry Quiz
 
-Client Registration System is a quiz web application.
+Chemistry Quiz is a quiz web application.
 
 ## Tecnologies
 
