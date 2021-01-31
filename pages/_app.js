@@ -6,7 +6,7 @@ import db from '../db.json';
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
-    font-family: 'Potta One', cursive;
+    font-family: 'Roboto', sans-serif;
   }
   body {
     margin: 0;
@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Lato', sans-serif;
     // Deixa branco no começo
     color: ${({ theme }) => theme.colors.contrastText};
+    justify-content: center;
   }
   html, body {
     min-height: 100vh;
@@ -35,12 +36,9 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Harry Potter Quiz</title>
+        <title>Chemistry Quiz</title>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />

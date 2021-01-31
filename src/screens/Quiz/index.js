@@ -12,12 +12,12 @@ function ResultWidget({ results }) {
   return (
     <Widget>
       <Widget.Header>
-        Tela de resultado:
+        Results
       </Widget.Header>
 
       <Widget.Content>
         <p>
-          Você acertou
+          You got
           {' '}
           {/* {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual === true;
@@ -28,13 +28,13 @@ function ResultWidget({ results }) {
           }, 0)} */}
           {results.filter((x) => x === true).length}
           {' '}
-          perguntas.
+          questions right.
         </p>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${result}`}>
-              {`${index + 1} Resultado: `}
-              {result === true ? 'Acertou' : 'Errou'}
+              {`${index + 1} Result: `}
+              {result === true ? 'Right' : 'Wrong'}
             </li>
           ))}
         </ul>
@@ -138,8 +138,8 @@ function QuestionWidget({
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
+          {isQuestionSubmited && isCorrect && <p>You are right!</p>}
+          {isQuestionSubmited && !isCorrect && <p>You are wrong!</p>}
         </AlternativesForm>
       </Widget.Content>
     </Widget>

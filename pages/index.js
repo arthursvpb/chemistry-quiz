@@ -35,8 +35,8 @@ import Button from '../src/components/Button';
 const QuizContainer = styled.div`
   width: 100%;
   max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
+  padding-top: 50px;
+  margin: 0 auto;
   @media screen and (max-width: 500px) {
     margin: auto;
     padding: 15px;
@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <QuizBackground backgroundImage={db.bg}>
-      <Head><title>Chemistry</title></Head>
+      <Head><title>Chemistry Quiz</title></Head>
       <QuizContainer>
         <Widget
           as={motion.section}
@@ -91,12 +91,12 @@ export default function Home() {
               <Input
                 name="username"
                 onChange={(event) => setName(event.target.value)}
-                placeholder="Seu nome"
+                placeholder="Your name"
                 value={name}
               />
               <Button type="submit" disabled={name.length === 0}>
                 {/* eslint-disable-next-line no-trailing-spaces */}
-                {`Jogar ${name}`}
+                {`Play ${name}`}
               </Button>
             </form>
           </Widget.Content>
@@ -112,7 +112,7 @@ export default function Home() {
           animate="show"
         >
           <Widget.Content>
-            <h1>Quizes da Galera</h1>
+            <h1>Quizzes from People</h1>
             <ul>
 
               {db.external.map((link) => {

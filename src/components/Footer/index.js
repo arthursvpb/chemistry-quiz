@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 // src/components/Footer/index.js
 const FooterWrapper = styled.footer`
-  background-color: #00000070;
+  background-color: #7FB5AA;
   padding: 20px;
   display: flex;
   align-items: center;
@@ -37,10 +37,10 @@ export default function Footer(props) {
         />
       </a>
       <p>
-        Orgulhosamente criado durante a
+        Proudly created during the
         {' '}
         <a href="https://www.alura.com.br/">
-          <span>Imersão React da Alura</span>
+          <span>React Immersion from Alura.</span>
         </a>
       </p>
     </FooterWrapper>

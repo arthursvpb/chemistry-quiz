@@ -1,22 +1,26 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import Lottie from 'react-lottie';
 import db from '../../db.json';
 import Widget from '../../src/components/Widget';
 import QuizBackground from '../../src/components/QuizBackground';
 import QuizContainer from '../../src/components/QuizContainer';
 import AlternativesForm from '../../src/components/AlternativesForm';
 import Button from '../../src/components/Button';
+import animationData from '../../src/lotties/chemistry.json';
+import BackLinkArrow from '../../src/components/BackLinkArrow';
 
 function ResultWidget({ results }) {
   return (
     <Widget>
       <Widget.Header>
-        Tela de resultado:
+        <BackLinkArrow href="/" />
+        Results:
       </Widget.Header>
 
       <Widget.Content>
         <p>
-          Você acertou
+          You got
           {' '}
           {/* {results.reduce((somatoriaAtual, resultAtual) => {
             const isAcerto = resultAtual === true;
@@ -27,13 +31,13 @@ function ResultWidget({ results }) {
           }, 0)} */}
           {results.filter((x) => x === true).length}
           {' '}
-          perguntas.
+          questions right.
         </p>
         <ul>
           {results.map((result, index) => (
             <li key={`result__${result}`}>
-              {`${index + 1} Resultado: `}
-              {result === true ? 'Acertou' : 'Errou'}
+              {`${index + 1} Result: `}
+              {result === true ? 'Right' : 'Wrong'}
             </li>
           ))}
         </ul>
@@ -43,14 +47,25 @@ function ResultWidget({ results }) {
 }
 
 function LoadingWidget() {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
+
   return (
     <Widget>
       <Widget.Header>
-        Carregando...
+        Loading...
       </Widget.Header>
 
       <Widget.Content>
-        [Desafio do Loading] - Usar o Lottie
+        <Lottie
+          options={defaultOptions}
+        />
       </Widget.Content>
     </Widget>
   );
@@ -72,9 +87,9 @@ function QuestionWidget({
   return (
     <Widget>
       <Widget.Header>
-        {/* <BackLinkArrow href="/" /> */}
+        <BackLinkArrow href="/" />
         <h3>
-          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
+          {`Question ${questionIndex + 1} of ${totalQuestions}`}
         </h3>
       </Widget.Header>
 
@@ -135,10 +150,10 @@ function QuestionWidget({
             {JSON.stringify(question, null, 4)}
           </pre> */}
           <Button type="submit" disabled={!hasAlternativeSelected}>
-            Confirmar
+            Confirm
           </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
+          {isQuestionSubmited && isCorrect && <p>You are right!</p>}
+          {isQuestionSubmited && !isCorrect && <p>You are wrong!</p>}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
@@ -170,7 +185,7 @@ export default function QuizPage() {
     // fetch() ...
     setTimeout(() => {
       setScreenState(screenStates.QUIZ);
-    }, 1 * 1000);
+    }, 1 * 3000);
   // nasce === didMount
   }, []);
 
